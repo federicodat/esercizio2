@@ -12,3 +12,4 @@ C:\source\Esercizio2_studenti\Esercizio2_studenti\obj\Debug\net8.0\refint\Eserci
 C:\source\Esercizio2_studenti\Esercizio2_studenti\obj\Debug\net8.0\Esercizio2_studenti.pdb
 C:\source\Esercizio2_studenti\Esercizio2_studenti\obj\Debug\net8.0\Esercizio2_studenti.genruntimeconfig.cache
 C:\source\Esercizio2_studenti\Esercizio2_studenti\obj\Debug\net8.0\ref\Esercizio2_studenti.dll
+C:\source\Esercizio2_studenti\Esercizio2_studenti\obj\Debug\net8.0\Esercizio2_studenti.sourcelink.json

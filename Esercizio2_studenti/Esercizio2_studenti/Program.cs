@@ -1,4 +1,5 @@
 ﻿using Esercizio2_studenti.classes;
+using System.ComponentModel.Design;
 
 namespace Esercizio_2_Gestione_lista_studenti
 {
@@ -8,7 +9,7 @@ namespace Esercizio_2_Gestione_lista_studenti
         {
 
             bool insAbi = true;
-
+            bool modlista = true;
 
 
             double varVoto = 0;
@@ -23,10 +24,9 @@ namespace Esercizio_2_Gestione_lista_studenti
             {
                 Console.Write("Dimmi cosa vuoi fare: \n - " +
                     "A Aggiungere uno studente alla lista \n - " +
-                    "M Modificare i dati di uno studente esistente \n - " +
+                    "U Modificare o cancellare dati di uno studente esistente \n - " +
                     "V Visualizzare l’elenco completo degli studenti \n - " +
                     "F Filtrare gli studenti in base a un voto minimo e massimo \n - " +
-                    "E Eliminare uno studente dalla lista in base al nome. \n - " +
                     "Q per uscire   : ");
 
                 string? inputUtente = Console.ReadLine();
@@ -48,20 +48,23 @@ namespace Esercizio_2_Gestione_lista_studenti
                                     Console.WriteLine("Inserisci Cognome: ");
                                     string? varcognome = Console.ReadLine();
                                     if (varcognome is not null && !varcognome.Trim().Equals(""))
-
                                     {
-                                        Console.WriteLine("Inserisci  : ");
-
-                                        Studenti stu = new Studenti()
-                                        {
-                                            Nome = varnome,
-                                            Cognome = varcognome,
-                                            Voto = varVoto
-                                        };
-                                        elenco.Add(varnome + " " + varcognome);
-                                        Console.WriteLine("inserito");
+                                        Console.WriteLine("Inserisci voto (da 0 a 10) : ");
+                                        double varvoto = Convert.ToDouble(Console.ReadLine());
+                                        if (varvoto >= 0 && varvoto <= 10! )
+                                            {
+                                           Studenti stu = new Studenti()
+                                            {
+                                                Nome = varnome,
+                                                Cognome = varcognome,
+                                                Voto = varvoto
+                                            };
+                                            elenco.Add(varnome + " " + varcognome + " " + varvoto);
+                                            Console.WriteLine("inserito studente");
+                                        }
+                                    else
+                                        Console.WriteLine("voto errato");
                                     }
-
                                     else
                                         Console.WriteLine("non accetto vuoto");
                                 }
@@ -72,28 +75,73 @@ namespace Esercizio_2_Gestione_lista_studenti
                                 //break;
                             }
 
-                            //    double varcifra1 = Convert.ToDouble(Console.ReadLine());
-                            //    Console.WriteLine("Addizione : dammi cifra 2: "); ;
-                            //    double varcifra2 = Convert.ToDouble(Console.ReadLine());
-
-                            //    double somma = varcifra1 + varcifra2;
-
-                            //Console.WriteLine($"Risultato operazione:{Nome}  ");
-                            Console.WriteLine("Aggiungere uno studente alla lista");
+                           
                             break;
 
 
-                        case "M":
+                        case "U":
+                            
+                                
                             {
+                               
+                                    if (elenco.Count > 0)
 
-                                Console.WriteLine("modifica uno studente alla lista");
+                                {
+
+                                    int l = 0; int max = 0;
+                                do
+                                {
+                                    Console.WriteLine(elenco[l]);
+
+                                    Console.WriteLine("C=cancella M=modifica P=prossimo ");
+                                    string? inputUtente2 = Console.ReadLine();
+                                    if (inputUtente2 != null) inputUtente2 = inputUtente2.ToUpper();
+                                    switch (inputUtente2)
+                                    {
+                                        case "C":
+
+                                            elenco.RemoveAt(l);
+                                            Console.WriteLine("cancellato record  studente");
+                                            l = elenco.Count;
+                                            break;
+                                            
+                                       case "M":
+
+
+                                       Console.WriteLine("modifica  ");
+                                            Console.WriteLine("work in progress  ");
+                                            l = elenco.Count;
+                                            break;
+                                        
+                                        case "P":
+
+
+                                            Console.WriteLine("prossimo");
+                                            l++;
+                                            break;
+                                        default:
+                                            Console.WriteLine("comando errato");
+
+                                            break;
+                                    }
+
+                                    //l++;
+                                } while (l < elenco.Count);
+
+
+                               
+                                break;
+                            }
+                            else
+                                Console.WriteLine("lista vuota");
                                 break;
 
                             }
                         case "V":
                             {
 
-                                Console.WriteLine("Visualizzare l’elenco completo degli studenti");
+                                Console.WriteLine("********* Elenco studenti  ***********");
+                                Console.WriteLine("Nome -  cognome -  voto ");
                                 for (int i = 0; i < elenco.Count; i++)
                                 {
 
@@ -106,18 +154,12 @@ namespace Esercizio_2_Gestione_lista_studenti
                             break;
                         case "F":
                             {
-
+                                Console.WriteLine("work in progress  ");
                                 Console.WriteLine("Filtrare gli studenti in base a un voto minimo e massimo");
                                 break;
 
                             }
-                        case "E":
-                            {
-
-                                Console.WriteLine("Eliminare uno studente dalla lista in base al nome");
-                                break;
-
-                            }
+                         
 
 
                         case "Q":

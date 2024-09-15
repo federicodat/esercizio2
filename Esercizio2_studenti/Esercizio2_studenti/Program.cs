@@ -13,8 +13,8 @@ namespace Esercizio_2_Gestione_lista_studenti
 
 
             double varVoto = 0;
-
-
+            string elestringa;
+            double varVotox = 0;
 
 
             #region menu 
@@ -59,7 +59,7 @@ namespace Esercizio_2_Gestione_lista_studenti
                                                 Cognome = varcognome,
                                                 Voto = varvoto
                                             };
-                                            elenco.Add(varnome + " " + varcognome + " " + varvoto);
+                                            elenco.Add(varnome + "  " + varcognome + "  " + varvoto);
                                             Console.WriteLine("inserito studente");
                                         }
                                     else
@@ -144,7 +144,6 @@ namespace Esercizio_2_Gestione_lista_studenti
                                 Console.WriteLine("Nome -  cognome -  voto ");
                                 for (int i = 0; i < elenco.Count; i++)
                                 {
-
                                     Console.WriteLine(elenco[i]);
 
 
@@ -154,9 +153,42 @@ namespace Esercizio_2_Gestione_lista_studenti
                             break;
                         case "F":
                             {
-                                Console.WriteLine("work in progress  ");
-                                Console.WriteLine("Filtrare gli studenti in base a un voto minimo e massimo");
-                                break;
+                                //Console.WriteLine("work in progress  ");
+                                //Console.WriteLine("Filtrare gli studenti in base a un voto minimo e massimo");
+                                Console.WriteLine("Inserisci voto da (valori ammessi 0 a 10) : ");
+                                double varvotoda = Convert.ToDouble(Console.ReadLine());
+                                if (varvotoda >= 0 && varvotoda <= 10!)
+                                {
+                                    Console.WriteLine("Inserisci voto a (valori ammessi 0 a 10) : ");
+                                    double varvotoa = Convert.ToDouble(Console.ReadLine());
+                                    if (varvotoa >= 0 && varvotoa <= 10!)
+                                     {
+                                        Console.WriteLine($"************* elenco studenti voto da {varvotoda}  a {varvotoa} ***********");
+                                        for (int i = 0; i < elenco.Count; i++)
+                                        {
+                                            //Console.WriteLine(elenco[i]);
+                                            elestringa = (elenco[i]);
+                                            string[] invitatiArray = elestringa.Split("  ");
+                                             
+
+                                            varVotox = Convert.ToDouble((invitatiArray[2]));
+                                            //Console.WriteLine(varVotox);
+
+                                            if (varVotox >= varvotoda && varVotox <= varvotoa )
+                                                Console.WriteLine(elenco[i]);
+
+                                        }
+
+                                    }
+                                    else
+                                                Console.WriteLine("voto errato");
+                                }
+                                    
+                               
+                               else
+                                        Console.WriteLine("voto errato");
+                                    //--
+                                    break;
 
                             }
                          
